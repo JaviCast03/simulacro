@@ -50,9 +50,19 @@ class Cliente{
     public function setDni($dni){
         $this->dni=$dni;
     }
+    public function baja(){
+        $b=$this->getDadoDeBaja();
+        IF($b==true){
+            $resp="No.";
+        }
+        else{
+            $resp= "Si.";
+        }
+        return $resp;
+    }
     public function __toString()
     {
         return "Nombre: ". $this->getNombre(). ", ". $this->getApellido()."\n".
-        "Esta dado de baja: ". $this->getDadoDeBaja(). "\n". "Tipo: ".$this->getTipo()."\n"."Dni: ". $this->getDni();
+        "Esta dado de baja: ". $this->baja(). "\n". "Tipo: ".$this->getTipo()."\n"."Dni: ". $this->getDni();
     }
 }
