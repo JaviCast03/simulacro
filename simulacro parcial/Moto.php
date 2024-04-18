@@ -64,7 +64,7 @@ class Moto{
     public function dispoStr(){
         $disponible=$this->getDispo();
         if($disponible==true){
-            $disponible="Esta dispoinble.";
+            $disponible="Esta disponible.";
         }
         else{
             $disponible="No esta disponible.";
@@ -74,7 +74,7 @@ class Moto{
     public function __toString(){
         return "Codigo: ". $this->getCodigo()."\n".
         "Precio de venta: ". $this->darPrecioVenta()."\n". "Año: ". $this->getAño()."\n"."Descripcion: ". $this->getInfo()."\n"
-        ."Incremento anual: ". $this->getIncAnual()."\n"."Disponibilidad: ". $this->dispoStr()."\n";
+        ."Incremento anual: ". $this->getIncAnual()."%\n"."Disponibilidad: ". $this->dispoStr()."\n";
     }
     /*5. Implementar el método darPrecioVenta el cual calcula el valor por el cual puede ser vendida una moto.
     Si la moto no se encuentra disponible para la venta retorna un valor < 0. Si la moto está disponible para

@@ -80,8 +80,8 @@ class Empresa{
         return $str;
     }
     public function __toString(){
-        return "Denominacion: ".$this->getDenominacion()."\n". "Direccion: ".$this->getDireccion()."\n"
-        . "Coleccion de clientes: ". $this->mostrarClientes()."\n"."Coleccion de motos".$this->mostrarMotos()
+        return "Denominacion: ".$this->getDenominacion()."\n". "Direccion: \n".$this->getDireccion()."\n"
+        . "Coleccion de clientes:\n". $this->mostrarClientes()."\n"."Coleccion de motos: \n".$this->mostrarMotos()
         ."\n"."Ventas realizadas: ".$this->mostrarVentas()."\n";
     }
     /*5.Implementar el método retornarMoto($codigoMoto) que recorre la colección de motos de la Empresa y
@@ -115,7 +115,7 @@ class Empresa{
        //no tiene que calcular el precio eso lo hace incorporarMoto()
         
         $importeFinal=0;
-        $hoy=date("d,m,y");
+        $hoy=date("d/m/y");
         if(!$objCliente->getDadoDeBaja()){
 
             $motosPorVender=[];//arreglo de las motos validas para vender

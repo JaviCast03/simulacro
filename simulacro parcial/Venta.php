@@ -59,7 +59,7 @@ class Venta{
         $i=0;
         foreach($todas as $moto){
             $i++;
-            echo $i.") ".$moto." , ";
+            echo $i.") ".$moto;
         }
     }
     public function __toString()//$numero,$fecha,$refCliente,$refCollMotos,$precioFinal
