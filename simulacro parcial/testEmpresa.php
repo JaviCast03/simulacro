@@ -22,6 +22,8 @@
 include_once "Cliente.php";
 include_once "Empresa.php";
 include_once "Moto.php";
+include_once "MotoImportada.php";
+include_once "MotoNacional.php";
 include_once "Venta.php";
 function recorrerArr($arr){
     $cad="";
@@ -31,12 +33,18 @@ function recorrerArr($arr){
     return $cad;
 }
 $objCliente1= new Cliente("Javier", "Castillo",false,"DNI", 48);
-$objCliente2= new Cliente("Ignacio", "Castillo",true,"DNI", 32);
-$obMoto1= new Moto(11, 2230000,2022,"Benelli Imperiale 400",85,true);
-$obMoto2= new Moto(12, 584000,2021,"Zanella Zr 150 Ohc",70,true);
-$obMoto3= new Moto(13, 999900,2023,"Zanella Patagonian Eagle 250",55,false);
-$empresa= new Empresa("Alta gama","Av Argentina 123",[$objCliente1, $objCliente2],[$obMoto1, $obMoto2, $obMoto3],[]);
-echo "Importe de la compra del cliente ".$objCliente1->getNombre()." ".$objCliente1->getApellido().": ".$empresa->registrarVenta([11,12,13],$objCliente1)."\n";
-$ventasDeUnCliente=$empresa->retornarVentasXCliente("DNI",48);
-recorrerArr($ventasDeUnCliente);
+$objCliente2= new Cliente("Ignacio", "Castillo",false,"DNI", 32);
+$objMoto11 = new MotoNacional (11, 2230000, 2022, "Benelli Imperiale 400", 85, true, 10);
+$objMoto12 = new MotoNacional (12, 584000, 2021, "Zanella Zr 150 Ohc", 70, true, 10);
+$objMoto13 = new MotoNacional (13, 999900, 2023, "Zanella Patagonian Eagle 250", 55, false);
+$objMoto14 = new MotoImportada(14, 12499900, 2020, "Pitbike Enduro Motocross Apollo Aiii 190cc Plr", 100, true, "Francia", 6244400);
+$empresa = new Empresa("Alta Gama", "Av Argentina 123", [$objCliente1, $objCliente2] , [$objMoto11, $objMoto12, $objMoto13, $objMoto14], []);
+
+echo $empresa->registrarVenta([11,12,13,14], $objCliente2) . "\n";
+echo $empresa->registrarVenta([13,14], $objCliente2) . "\n";
+echo $empresa->registrarVenta([14, 2], $objCliente2) . "\n";
+
+var_dump($empresa->informarVentasImportadas());
+echo $empresa->informarSumaVentasNacionales();
+echo $empresa;
 
