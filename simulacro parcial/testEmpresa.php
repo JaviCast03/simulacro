@@ -39,4 +39,4 @@ $empresa= new Empresa("Alta gama","Av Argentina 123",[$objCliente1, $objCliente2
 echo "Importe de la compra del cliente ".$objCliente1->getNombre()." ".$objCliente1->getApellido().": ".$empresa->registrarVenta([11,12,13],$objCliente1)."\n";
 $ventasDeUnCliente=$empresa->retornarVentasXCliente("DNI",48);
 recorrerArr($ventasDeUnCliente);
-echo $empresa;
+

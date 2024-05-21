@@ -81,14 +81,35 @@ class Venta{
             $colMotos=[$objMoto];//guardando el objMoto adentro de la coleccion de motos
             $this->setRefCollMotos($colMotos);//modificando la coleccion motos para actualizarla
             $precioMoto=$objMoto->darPrecioVenta();//retorna el precio de venta segun la moto y sus datos
-            $precioFinalCopia=$this->getPrecioFinal();//obtiene el precio final del objeto venta
+            $precioFinalCopia=$this->getPrecioFinal();//obtiene el precio final del objeto venta la func. devolveria un int
             $precioFinalCopia=$precioFinalCopia+$precioMoto;//se suma los precios anteriores mas el actual si es que es una misma venta
             $this->setPrecioFinal($precioFinalCopia);//se modifica el precio final por cada moto y queda guardado asi se suma para la prox moto si es que se compra mas de 1
             
-            return 1;//retorna 1 si se pudo añadir al array
+            $resp= 1;//retorna 1 si se pudo añadir al array
         }
         else{
-            return -1;
+            $resp=-1;
         }
+        return $resp;
+    }
+    public function retornarTotalVentaNacional(){
+        $colMotos = $this->getRefCollMotos();
+        $sumatoria = 0;
+        foreach ($colMotos as $moto){
+            if ($moto instanceof MotoNacional) {
+                $sumatoria += $moto->darPrecioVenta();
+            }
+        }
+        return $sumatoria;
+    }
+    public function retornarMotosImportadas(){
+        $colMotos = $this->getRefCollMotos();
+        $motosImportadas = [];
+        foreach ($colMotos as $moto){
+            if ($moto instanceof MotoImportada) {
+                $motosImportadas[] = $moto;
+            }
+        }
+        return $motosImportadas;
     }
 }

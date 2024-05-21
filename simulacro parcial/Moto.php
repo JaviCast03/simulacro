@@ -85,19 +85,19 @@ class Moto{
     por_inc_anual: porcentaje de incremento anual de la moto.
     */
     public function darPrecioVenta(){
-        $disponibilidad=$this->getDispo();
-        $_compra=$this->getCosto();
+        $disponibilidad=$this->getDispo();//llama a la disponibilidad de la moto
+        $_compra=$this->getCosto();//saca el costo base de la moto
         $añoAct=date("Y");
         $añoFabricacion=$this->getAño();
         $por_inc_anual=$this->getIncAnual();
-        $por_inc_anual=$por_inc_anual/100;
+        $por_inc_anual=$por_inc_anual/100;//se saca el porcentaje para multiplicar
         if($disponibilidad==true){
             $anioCalc=$añoAct-$añoFabricacion;
             $_venta= $_compra + $_compra * ($anioCalc * $por_inc_anual);
             return $_venta;
         }
         else{
-            $_venta= -1;
+            $_venta= 0;
         }
         return $_venta;
     }
